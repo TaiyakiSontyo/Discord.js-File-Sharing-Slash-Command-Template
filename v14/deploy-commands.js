@@ -1,8 +1,6 @@
 const { REST, Routes } = require('discord.js'); // discord.jsを使うことを宣言します
 require('dotenv').config() // dotenvを使うことを宣言します
 const fs = require('fs'); // fsを使うことを宣言します
-const path = require('path'); // path を使うことを宣言します
-// 宣言祭りですね
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
