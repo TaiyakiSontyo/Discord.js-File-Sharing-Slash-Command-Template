@@ -10,7 +10,7 @@ for (const file of commandFiles) { // commandFilesをすべて読み込みます
     if ('data' in command && 'execute' in command) {
         commands.push(command.data.toJSON()); // 登録するコマンドをあらかじめここで用意しておきます
     } else {
-        console.log(`[警告] ${filePath} にはスラッシュコマンドの登録に必要な "data" または "execute" が足りません。正しい構文になっていることを確認してください。`);
+        console.log(`[警告] ${file} にはスラッシュコマンドの登録に必要な "data" または "execute" が足りません。正しい構文になっていることを確認してください。`);
     } // 何かが足りなかった場合に警告を表示します。
 }
 
