@@ -37,11 +37,23 @@ Application-Idに文字列ではなく数値を書いているようです。  �
 ### Error: Expected token to be set for this request, but none was present, または Error [TOKEN_INVALID]: An invalid token was provided.
 .envファイルにトークンは設定しましたか？ DISCORD_TOKEN=あなたのBotのtoken のように書く必要があります。
 
+### ExpectedConstraintError: Invalid string format  
+スラッシュコマンドの名前に大文字アルファベットや日本語は使えません。 すべて小文字のアルファベットに統一してください。  
+
 ## コマンドの追加方法
-[こちら](https://github.com/TaiyakiSontyo/Discord.js-File-Sharing-Slash-Command-Template/tree/main/v13)が参考になるかと。
-
-ちなみに、v14では MessageEmbed から EmbedBuilder へと変わったので 見落とさないようにしてくださいね。
-
+```js
+const { SlashCommandBuilder } = require('discord.js');
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('スラッシュコマンドの名前')
+        .setDescription('説明'),
+    async execute(interaction) {
+        await interaction.reply('実行された際の応答');
+    }
+}
+```  
+基本的にはこんな感じで書きます。  
+ファイル名は コマンド名.js の方が分かりやすいかも？  
 
 ### 関連サイト
 [discord.jsのドキュメント](https://old.discordjs.dev/)  
