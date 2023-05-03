@@ -1,7 +1,7 @@
 module.exports = {
 	data: {
         name: "ping",
-        description: "pingを送信します。",
+        description: "pong!と送信します。",
     },
     async execute(interaction) {
         const now = Date.now(); //現在時刻を取得
