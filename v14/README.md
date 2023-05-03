@@ -1,4 +1,4 @@
-# Discord.js-File-Sharing-Slash-Command-Template
+# Discord.js-File-Sharing-Slash-Command-Template(glitch対応)
 
 ## Tokenの取得
 デベロッパーポータルから アプリケーションのBotタブを開き、  
