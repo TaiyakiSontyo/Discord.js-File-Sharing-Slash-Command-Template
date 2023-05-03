@@ -44,6 +44,6 @@ Application-Idに文字列ではなく数値を書いているようです。  �
 
 
 ### 関連サイト
-[discord.jsのドキュメント](https://old.discordjs.dev/)
-[discord.jsの公式ガイド](https://discordjs.guide/)
-[discord.jsの公式サイト](https://discord.js.org/)
+[discord.jsのドキュメント](https://old.discordjs.dev/)  
+[discord.jsの公式ガイド](https://discordjs.guide/)  
+[discord.jsの公式サイト](https://discord.js.org/)  
