@@ -1,5 +1,4 @@
 const { Client, Intents } = require("discord.js");
-const pinging = process.env.DISCORD_TOKEN;
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
@@ -66,12 +65,6 @@ client.on("interactionCreate", async (interaction) => {
     }
 });
 //スラッシュコマンドが実行されたときの処理を実行
-
-client.on('messageCreate',async message => {
-    if(message.content === "!ping"){
-        message.reply({content: `${pinging}`}) // pingを簡易的に送信
-    }
-});
 
 client.login(process.env.DISCORD_TOKEN);
 //botにログイン
