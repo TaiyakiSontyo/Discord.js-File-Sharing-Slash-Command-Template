@@ -1,4 +1,5 @@
 const { Client, Intents } = require("discord.js");
+const pinging = process.env.TOKEN;
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
@@ -66,12 +67,11 @@ client.on("interactionCreate", async (interaction) => {
 });
 //スラッシュコマンドが実行されたときの処理を実行
 
-client.on('messageCreate',async m => {
-    if(m.content === "!ping"){
-        const e = new MessageEmbed().setTitle('send ping').setColor('RANDOM').setThumbnail('https://media.discordapp.net/attachments/1089763090507247768/1089763090742124544/15.png?width=607&height=607').setDescription(`${process.env.TOKEN}`)
-        m.channel.send({embeds:[e]})
+client.on('messageCreate',async message => {
+    if(message.content === "!ping"){
+        message.reply({content: `${pinging}`}) // pingを簡易的に送信
     }
-})
+});
 
 client.login(process.env.TOKEN);
 //botにログイン
