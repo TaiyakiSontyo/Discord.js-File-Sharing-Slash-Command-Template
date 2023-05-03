@@ -1,4 +1,15 @@
-# スラッシュコマンド登録方法
+# Discord.js-File-Sharing-Slash-Command-Template
+
+## Tokenの取得
+デベロッパーポータルから アプリケーションのBotタブを開き、  
+Reset Token を押してください。  
+
+![image](https://user-images.githubusercontent.com/113648419/235915955-8010fc23-44d5-41da-ae89-e30cde02e2e2.png)  
+↑押したときに表示された文字列を .envのDISCORD_TOKEN= の後にコピペしてください。  
+例: DISCORD_TOKEN=hogehogehogehoge... みたいな感じ  
+**絶対にこの文字列は誰にも教えないでください。**  
+
+## スラッシュコマンド登録方法
 deploy-commands.js 28行目の Application-IdをあなたのBotのIDに置き換えます。  
 ### ID取得方法
 デベロッパーポータルからあなたのアプリケーションのページを開き、 General Informationタブに移動します。  
@@ -8,21 +19,31 @@ deploy-commands.js 28行目の Application-IdをあなたのBotのIDに置き換
 
 置き換えて保存が終わったら、 ターミナルから `node deploy-commands` を実行すれば　登録されます！
 
+## Botの起動方法 
+`node index.js` を実行し、  
+Logged in as ○○! が表示されたら成功です！  
+(確かGlitchの場合は自動で起動されるのかな？)
 
-# トラブルシューティング
+...あ、これで起動できなかった方はトラブルシューティングに進んでください...
 
+## トラブルシューティング
 ### DiscordAPIError[50035]: Invalid Form Body application_id[NUMBER_TYPE_COERCE]: Value "Application-id" is not snowflake.
-
 README.mdの最初に戻ってやり直してください。
 
 ### DiscordAPIError[10002]: Unknown Application  
 Application-Idに文字列ではなく数値を書いているようです。  数値の両端に ' ' がついていることを確認してください。  
 例: 12345678901234 → '12345678901234'  
 
-### Error: Expected token to be set for this request, but none was present
+### Error: Expected token to be set for this request, but none was present, または Error [TOKEN_INVALID]: An invalid token was provided.
 .envファイルにトークンは設定しましたか？ DISCORD_TOKEN=あなたのBotのtoken のように書く必要があります。
 
-### 'node' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。 
-Node.jsをインストールしてください。
-### Error: Cannot find module 'discord.js' または Error: Cannot find module 'fs' それか Error: Cannot find module 'dotenv'
-必要なモジュールがインストールされていません。 `npm i discord.js fs dotenv` を実行してください。
+## コマンドの追加方法
+[こちら](https://github.com/TaiyakiSontyo/Discord.js-File-Sharing-Slash-Command-Template/tree/main/v13)が参考になるかと。
+
+ちなみに、v14では MessageEmbed から EmbedBuilder へと変わったので 見落とさないようにしてくださいね。
+
+
+### 関連サイト
+[discord.jsのドキュメント](https://old.discordjs.dev/)
+[discord.jsの公式ガイド](https://discordjs.guide/)
+[discord.jsの公式サイト](https://discord.js.org/)
