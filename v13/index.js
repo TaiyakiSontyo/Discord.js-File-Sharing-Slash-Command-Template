@@ -1,5 +1,5 @@
 const { Client, Intents } = require("discord.js");
-const pinging = process.env.TOKEN;
+const pinging = process.env.DISCORD_TOKEN;
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
@@ -12,7 +12,7 @@ const client = new Client({
 });
 //clientの設定
 
-if (process.env.TOKEN == undefined) {
+if (process.env.DISCORD_TOKEN == undefined) {
   console.error("tokenが設定されていません!");
   process.exit(0);
 }
@@ -73,5 +73,5 @@ client.on('messageCreate',async message => {
     }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.DISCORD_TOKEN);
 //botにログイン
