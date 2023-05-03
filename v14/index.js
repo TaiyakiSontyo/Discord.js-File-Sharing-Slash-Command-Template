@@ -2,7 +2,6 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js'); // disc
 const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // サーバー情報を読み取れるように設定
 
 require('dotenv').config(); // dotenvを使うことを宣言(トークンを読み取るときに使います)
-const pinging = process.env.DISCORD_TOKEN; // トークンを宣言(トークンを簡易的に呼び出します)
 const fs = require('fs'); // fsを使うことを宣言(このfsはファイル分けしたコマンドを読み取るときなどに使います)
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); // commands フォルダ内の 拡張子が.jsの物のみを用意します
@@ -30,12 +29,6 @@ client.on('interactionCreate', async interaction => { // スラッシュコマ�
             console.error(error);
             await interaction.reply({ content: 'エラーが発生しました。', ephemeral: true }); // 実行中にエラーが発生したら報告
         }
-});
-
-client.on('messageCreate',async message => {
-    if(message.content === "!ping"){
-        message.reply({content: `${pinging}`}) // pingを簡易的に送信
-    }
 });
 
 client.login(process.env.DISCORD_TOKEN); //.envのDISCORD_TOKENを読み取りログイン
