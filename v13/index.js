@@ -2,25 +2,29 @@ const { Client, Intents } = require("discord.js");
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
+//package関連の呼び出し
 
 const client = new Client({
     partials: ["CHANNEL"],
     intents: new Intents(32767),
     restTimeOffset: -1000,
-  });
+});
+//clientの設定
 
 if (process.env.TOKEN == undefined) {
   console.error("tokenが設定されていません!");
   process.exit(0);
 }
+//TOKENが設定されていない場合のエラーメッセージ
 
-const commands = {}
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const commands = {}; //定数commandsの作成。
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js')); //fsを使用し、commandsフォルダの中のjsファイルの取得。
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     commands[command.data.name] = command
 }
+//先ほど作成した定数commandsにjsファイルのデータを代入(jsファイルの数だけ繰り返します)
 
 client.once("ready", async () => {
     const data = []
@@ -28,7 +32,13 @@ client.once("ready", async () => {
         data.push(commands[commandName].data)
     }
     await client.application.commands.set(data);
+    /********************
+    * await client.application.commands.set(data,"guildid");
+    * guildidには設定したいサーバーのidを入力してください。
+    * guildidを追加するとグローバルスラッシュコマンドではなくギルドスラッシュコマンドになります。
+    ********************/
 });
+//bot起動時にスラッシュコマンド(グローバル用)として登録。
 
 client.on("ready", async () => {
     client.user.setActivity(`/ping`, {
@@ -37,6 +47,7 @@ client.on("ready", async () => {
     client.user.setStatus("dnd");
     console.log(`${client.user.tag} is ready!`);
 });
+//起動時にコンソールにreadyのログ表示
 
 client.on("interactionCreate", async (interaction) => {
     if (!interaction.isCommand()) {
@@ -53,5 +64,7 @@ client.on("interactionCreate", async (interaction) => {
         })
     }
 });
+//スラッシュコマンドが実行されたときの処理を実行
 
 client.login(process.env.TOKEN);
+//botにログイン
